@@ -1,0 +1,30 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+from __future__ import (absolute_import, division, print_function,
+                        unicode_literals)
+import argparse
+from concentration_converter import ConcentrationConverter
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-s", "--symbols",
+                        nargs='+',
+                        type=str,
+                        required=True,
+                        help="Element symbols")
+    parser.add_argument("-c", "--concentrations",
+                        nargs='+',
+                        type=float,
+                        required=True,
+                        help="Concentrations in wt.%")
+    args = parser.parse_args()
+
+    concentration_converter = ConcentrationConverter()
+    concentration_converter.run(
+        args.symbols, args.concentrations, mode='wt2at')
+    concentration_converter.write(mode='at')
+
+
+if __name__ == "__main__":
+    main()
