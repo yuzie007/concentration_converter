@@ -34,7 +34,7 @@ class ConcentrationConverter(object):
 
     @staticmethod
     def _normalize(concentrations):
-        return np.array(concentrations) / sum(concentrations) * 100
+        return np.array(concentrations) / sum(concentrations)
 
     def write(self, mode):
         if mode == 'at':
@@ -48,7 +48,7 @@ class ConcentrationConverter(object):
             print('{:16s}'.format(symbol), end='')
         print()
         for weight in weights:
-            print('{:16.9f}'.format(weight), end='')
+            print('{:16.12f}'.format(weight), end='')
         print()
 
     def get_symbols(self):
